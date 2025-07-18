@@ -1,10 +1,15 @@
 const express=require("express");
 const app=express();
+require('dotenv').config();
+const sequelize=require('./config/db');
 const PORT=8000;
-app.get("/demo",(req,res)=>{
-    res.send("This app is working now....");
-})
-
-app.listen(PORT,()=>{
-    console.log(`Server running on http://localhost:${PORT}`)
-})
+app.use(express.json())
+sequelize.sync({alter:true})
+       .then(()=>{
+        app.listen(PORT,()=>{
+            console.log(`server running on port ${PORT}`)
+        });
+       })
+       .catch(err=>{
+        console.error("Failed to sync database:",err);
+       });
