@@ -20,7 +20,11 @@ npm install bcrypt
 5. open Bytexl Application and navigate to nimbus 
 6. open a mysql workspace and click on the connection info
 7. Now in project folder create .env file and give
- ```
+8. Restart your server
+```
+
+## DB CONNECTION in .env file
+```
  DB_HOST=bytexldb.com
 DB_PORT=5051
 DB_USER=user_rrrtfhtr
@@ -28,6 +32,5 @@ DB_PASSWORD=prthty
 DB_NAME=db_4fgnhg
 DB_DIALECT=mysql
 PORT=8000
- ```
- 8. Restart your server
+
 ```
