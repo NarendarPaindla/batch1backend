@@ -1,6 +1,6 @@
-
+// backend/models/User.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const sequelize      = require('../config/db');
 
 const User = sequelize.define('User', {
   id: {
@@ -15,7 +15,7 @@ const User = sequelize.define('User', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    unique: 'users_email_unique',   // ← Named constraint
     validate: {
       isEmail: true,
     },
@@ -32,6 +32,15 @@ const User = sequelize.define('User', {
 }, {
   tableName: 'users',
   timestamps: true,
+
+  // Explicit index definition re-using the same name
+  indexes: [
+    {
+      name: 'users_email_unique',   // ← Must match the `unique` name above
+      unique: true,
+      fields: ['email']
+    }
+  ]
 });
 
 module.exports = User;
