@@ -34,3 +34,19 @@ DB_DIALECT=mysql
 PORT=8000
 
 ```
+
+# API ROUTES
+
+**SIGNUP**
+
+--> POST http://localhost:8000/api/auth/signup
+
+body->raw->JSON
+
+```json
+{
+    "name":"rohit",
+    "email":"rohit@gmail.com",
+    "password":"pass123"
+}
+```
